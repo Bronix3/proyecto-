@@ -1,0 +1,23 @@
+<div class="container feed-container py-4">
+  <%= link_to "← Volver al feed", root_path, class: "link-secondary d-inline-block mb-3" %>
+
+  <article class="card post-card">
+    <div class="post-card-header">
+      <span class="post-avatar" aria-hidden="true">
+        <%= @post.user.email.first.upcase %>
+      </span>
+      <div>
+        <h1 class="h6 mb-0"><%= @post.user.email %></h1>
+        <small class="text-secondary"><%= time_ago_in_words(@post.created_at) %></small>
+      </div>
+    </div>
+
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image, class: "post-image", alt: "Imagen publicada por #{@post.user.email}" %>
+    <% end %>
+
+    <div class="card-body">
+      <p class="post-copy mb-0"><%= @post.description %></p>
+    </div>
+  </article>
+</div>
